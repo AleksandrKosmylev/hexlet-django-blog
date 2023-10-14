@@ -1,4 +1,10 @@
 from django.http import HttpResponse
-
+from django.shortcuts import render
+"""
 def index(request):
     return HttpResponse('article')
+"""
+def index(request):
+    return render(request, 'index.html', context={
+        'who': 'articles',
+    })
