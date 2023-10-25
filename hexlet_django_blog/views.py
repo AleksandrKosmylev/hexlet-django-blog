@@ -1,5 +1,10 @@
 from django.shortcuts import render
 from django.views.generic.base import TemplateView
+from django.views import View
+from django.urls import reverse
+from django.http import HttpResponseRedirect
+from django.http import HttpResponse
+
 
 """
 def index(request):
@@ -9,14 +14,28 @@ def index(request):
 """
 
 
-class IndexView(TemplateView):
+class IndexView(View):
+
+    def get(self, request, *args, **kwargs):
+        return HttpResponse('Hello, from IndexView(View)')
+
+
+class HomePageView(TemplateView):
+    """
     template_name = "index.html"
 
     def get_context_data(self, **kwargs):
+
         context = super().get_context_data(**kwargs)
-        context['who'] = 'World (from HomePageView(TemplateView))'
+        context['who'] = '(from HomePageView(TemplateView))'
         return context
+        """
+    #  comes from articles.url
+    def get(self, request, *args, **kwargs):
+        reversed_url = reverse('article', args=["python", 42])
+        return HttpResponseRedirect(reversed_url)
 
 
 def about(request):
     return render(request, 'about.html')
+
