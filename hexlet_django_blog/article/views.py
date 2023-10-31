@@ -28,10 +28,11 @@ class JustStaticPage(View):
 
 
 def show_tags_id(request, tags, article_id):
-    return render(request, 'tags_and_id.html',  context={
+    return render(request, 'articles/tags_and_id.html',  context={
         'id': article_id, 'tag': tags
     })
 
+    
 def reversed_view(request):
     reversed_url = reverse('article', args=["gorecode", 17])
     return HttpResponseRedirect(reversed_url)
