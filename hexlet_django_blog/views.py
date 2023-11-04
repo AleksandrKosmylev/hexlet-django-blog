@@ -1,9 +1,10 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.views.generic.base import TemplateView
 from django.views import View
 from django.urls import reverse
 from django.http import HttpResponseRedirect
 from django.http import HttpResponse
+from hexlet_django_blog.article.models import Article
 
 
 """
@@ -21,7 +22,7 @@ class IndexView(View):
 
 
 class HomePageView(TemplateView):
-    
+
     template_name = "index.html"
 
     def get_context_data(self, **kwargs):
