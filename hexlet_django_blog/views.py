@@ -21,7 +21,7 @@ class IndexView(View):
 
 
 class HomePageView(TemplateView):
-    """
+    
     template_name = "index.html"
 
     def get_context_data(self, **kwargs):
@@ -29,12 +29,12 @@ class HomePageView(TemplateView):
         context = super().get_context_data(**kwargs)
         context['who'] = '(from HomePageView(TemplateView))'
         return context
-        """
-    #  comes from articles.url
+    """
+    #  comes from articles.url (uses reverse)
     def get(self, request, *args, **kwargs):
         reversed_url = reverse('article', args=["python", 42])
         return HttpResponseRedirect(reversed_url)
-
+    """
 
 def about(request):
     return render(request, 'about.html')
